@@ -1,10 +1,7 @@
 from flask import Flask, render_template
-<<<<<<< HEAD
-=======
 
 import app.persistance as pers
 import app.persistance.products as products
->>>>>>> 0d7f3b2 (add interfaces for listing drinks)
 
 app = Flask(__name__)
 
