@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <body>
+  <table>
+    <tr>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Size</th>
+        <th>Price</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    {% for item in products: %}
+    <tr>
+        <td>{{ item.Title }}</td>
+        <td>{{ item.Category }}</td>
+        <td>{{ item.Size }}</td>
+        <td>{{ item.Price}}</td>
+        <td></td>
+        <td><a data-confirm="Are you sure?" action="" method="DELETE" data-method="delete" href="/ProductsList/" rel="nofollow">Delete</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+  </body>
+</html>
