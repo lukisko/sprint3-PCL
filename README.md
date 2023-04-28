@@ -5,4 +5,4 @@ one of steps that you need to do in order to run this project outside of contain
 
 to start the project in docker you need to :
 1. docker build -t flask-app .
-2. docker run -dp 5000:5000 flask-app
+2. docker run -dp 5000:5000 --env-file .envfile flask-app
