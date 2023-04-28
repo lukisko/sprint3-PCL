@@ -7,3 +7,9 @@ def getAllDrinks():
 def createDrink(product): # if succesfully created, return id other then 0
     product.id = 1
     return product
+
+def removeDrink(productId):
+    pass
+
+def getDrink(id):
+    return model.Product(1,"latte",'coffe','Medium',25)

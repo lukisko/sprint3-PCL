@@ -3,5 +3,5 @@ class Product:
         self.id = id
         self.Title = title
         self.Category = category
-        self.size = size 
+        self.Size = size 
         self.Price = price

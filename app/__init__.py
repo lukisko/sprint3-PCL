@@ -26,8 +26,17 @@ def createProduct():
         if (savedProduct.id == 0):
             return "can not create the product, please try again later"
         else:
-            return redirect('/ProductList',code=302)
-        
+            return redirect('/ProductList',code=302) # after creating of drink forward user to the list of all drinks
+      
+@app.route("/product/<id>", methods=["DELETE","GET"])
+def removeProduct(id):
+    if (request.method == "DELETE"):
+        products.removeDrink(id)
+        return render_template("product-removed.html")
+    if (request.method == "GET"):
+        product = products.getDrink(id)
+        return render_template("show-product.html", product = product)
+    
 
 @app.route("/list")
 def getListOfDrinks():
