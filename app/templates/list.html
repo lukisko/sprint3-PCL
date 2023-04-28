@@ -1,0 +1,13 @@
+<html>
+    <body>
+        <p>
+            testing list
+        </p>
+        {{ list }}
+        <ul>
+            {% for drink in list %}
+                <li>{{ drink.Title }}</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
