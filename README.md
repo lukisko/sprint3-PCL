@@ -4,5 +4,6 @@ one of steps that you need to do in order to run this project outside of contain
 (you can you also other names but then you want to change gitignore file and dockerignore file)
 
 to start the project in docker you need to :
+0. create file .envfile with values for USERNAME and PASSWORD
 1. docker build -t flask-app .
 2. docker run -dp 5000:5000 --env-file .envfile flask-app
