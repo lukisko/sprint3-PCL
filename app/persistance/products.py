@@ -31,7 +31,7 @@ def getAllDrinks():
     
 def createDrink(product): # if succesfully created, return id other then 0
     conn, cur = createConnetction()
-    cur.execute("INSERT INTO Product (name, type, size, price) VALUES (%s, %s, %s, %s) RETURNING id", (product.name, product.type, product.size, product.price))
+    cur.execute("INSERT INTO Product (title, category, size, price) VALUES (%s, %s, %s, %s) RETURNING id", (product.Title, product.Category, product.Size, product.Price))
     conn.commit()
     id = cur.fetchone()[0]
     cur.close()
