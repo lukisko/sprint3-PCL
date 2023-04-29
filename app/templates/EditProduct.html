@@ -51,7 +51,7 @@
     <a href="/ProductsList" class="button">Back to Products List</a>
     <div class="container">
         <h1>Edit Product</h1>
-        <form method="POST" action="{{ url_for('update_product', product_name=product.name) }}">
+        <form method="POST" action="{{ url_for('update_product', product_id=product.id) }}">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" class="form-control" id="name" name="name" value="{{ product.name }}" required>

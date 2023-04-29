@@ -46,9 +46,11 @@ def product_detail(product_name):
     return render_template('EditProduct.html', product=product)
 
 #update product endpoint
-@app.route('/update/<string:product_name>', methods=['GET', 'POST'])
-def update_product(product_name):
-    for product in products:
+@app.route('/update/<int:product_id>', methods=['GET', 'POST'])
+def update_product(product_id):
+    products.removeDrink(product_id)
+    return createProduct()
+    '''for product in products:
         if product.name == product_name:
             if request.method == 'POST':
                 product.name = request.form['name']
@@ -58,20 +60,12 @@ def update_product(product_name):
                 return redirect('/ProductsList')
             else:
                 return render_template('EditProduct.html', product=product)
-    return 'Product not found'
-
-#delete product endpoint
-@app.route("/product/<id>", methods=["DELETE","GET"])
-def removeProduct(id):
-    if (request.method == "DELETE"):
-        products.removeDrink(id)
-    return redirect('/ProductsList')
-
+    return 'Product not found'''
 
 # create product endpoint
 
-@app.route('/create', methods=['GET', 'POST'])
-def create():
+@app.route("/product", methods=["POST"])
+def createProduct():
     if request.method == 'POST':
         name = request.form['name']
         category = request.form['category']
@@ -82,11 +76,11 @@ def create():
         if (savedProduct.id == 0):
             return "can not create the product, please try again later"
         else:
-            return redirect('/ProductList') # after creating of drink forward user to the list of all drinks
+            return redirect('/ProductsList') # after creating of drink forward user to the list of all drinks
 
-@app.route("/product/<id>", methods=["DELETE","GET"])
+@app.route("/product/<id>", methods=["POST","GET"]) # we are making very bad things and sorry for using post insted of delete
 def removeProduct(id):
-    if (request.method == "DELETE"):
+    if (request.method == "POST"):
         products.removeDrink(id)
         return redirect('/ProductsList')
     if (request.method == "GET"): # this is product detail

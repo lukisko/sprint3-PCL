@@ -143,8 +143,8 @@
                         <a href="/product/{{ item.id }}" class="btn btn-sm btn-warning">Edit</a>
                       </td>
                       <td>
-                        <form action="/delete" method="POST">
-                          <input type="hidden" name="product_name" value="{{ item.name }}">
+                        <form action="/product/{{ item.id }}" method="POST">
+                          <input type="hidden" name="product_id" value="{{ item.id }}">
                           <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                         </form>
                       </td>
