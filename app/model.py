@@ -1,7 +1,7 @@
 class Product:
-    def __init__(self, id, title, category, size, price):
+    def __init__(self, id, name, category, size, price):
         self.id = id
-        self.Title = title
+        self.name = name
         self.Category = category
         self.Size = size 
         self.Price = price
