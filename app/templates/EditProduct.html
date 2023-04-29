@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Edit Product</title>
+    <!-- Load Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Load custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px #ced4da;
+        }
+
+        h1 {
+            color: #dc3545;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #F44336;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #f77b6d;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="/ProductsList" class="button">Back to Products List</a>
+    <div class="container">
+        <h1>Edit Product</h1>
+        <form method="POST" action="{{ url_for('update_product', product_name=product.name) }}">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ product.name }}" required>
+            </div>
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <select class="form-control" id="category" name="category" required>
+                    <option value="Coffee" {% if product.category=='Coffee' %}selected{% endif %}>Coffee</option>
+                    <option value="Tea" {% if product.category=='Tea' %}selected{% endif %}>Tea</option>
+                    <option value="Soda" {% if product.category=='Soda' %}selected{% endif %}>Soda</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="size">Size:</label>
+                <select class="form-control" id="size" name="size" required>
+                    <option value="S" {% if product.size=='S' %}selected{% endif %}>S</option>
+                    <option value="L" {% if product.size=='L' %}selected{% endif %}>L</option>
+                    <option value="XL" {% if product.size=='XL' %}selected{% endif %}>XL</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="number" class="form-control" id="price" name="price" value="{{ product.price }}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+    </div>
+
+    <!-- Load Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

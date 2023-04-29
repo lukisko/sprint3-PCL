@@ -36,8 +36,42 @@ def menuPage():
 def productsListPage():
     return render_template('ProductsList.html', products=products.getAllDrinks())
 
-@app.route("/product", methods=["POST"])
-def createProduct():
+@app.route("/EditProduct/<string:product_name>")
+def product_detail(product_name):
+    product = None
+    for obj in products:
+        if obj.name == product_name:
+            product = obj
+            break
+    return render_template('EditProduct.html', product=product)
+
+#update product endpoint
+@app.route('/update/<string:product_name>', methods=['GET', 'POST'])
+def update_product(product_name):
+    for product in products:
+        if product.name == product_name:
+            if request.method == 'POST':
+                product.name = request.form['name']
+                product.category = request.form['category']
+                product.size = request.form['size']
+                product.price = int(request.form['price'])
+                return redirect('/ProductsList')
+            else:
+                return render_template('EditProduct.html', product=product)
+    return 'Product not found'
+
+#delete product endpoint
+@app.route("/product/<id>", methods=["DELETE","GET"])
+def removeProduct(id):
+    if (request.method == "DELETE"):
+        products.removeDrink(id)
+    return redirect('/ProductsList')
+
+
+# create product endpoint
+
+@app.route('/create', methods=['GET', 'POST'])
+def create():
     if request.method == 'POST':
         name = request.form['name']
         category = request.form['category']
